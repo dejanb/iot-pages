@@ -1,0 +1,54 @@
+---
+layout: base
+title: Blog
+---
+
+#intro
+  These pages are intended to record the work that is going on within JBoss in the area of Internet of Things (IoT). At present we have no single IoT related project because it encompasses many different technologies, such as messaging and development frameworks. As such, much work on IoT is occuring within projects where that effort is more relevant, e.g., ActiveMQ/HornetQ for MQTT.
+
+#menu
+  %a{:href=>site.base_url + '/blog/tags/devices/'} Devices
+
+#menu
+  %a{:href=>site.base_url + '/blog/tags/mediators/'} Mediators
+
+#menu
+  %a{:href=>site.base_url + '/blog/tags/data%20processing/'} Data Processing      
+
+#quick
+  %h2.icon.quick Quick Links
+  %ul
+    %li
+      %a{:href=>'http://www.jboss.org/products/amq/overview/'} JBoss A-MQ
+    %li
+      %a{:href=>'https://github.com/rhiot/rhiot'} Rhiot 
+
+#latest
+  %h2.icon.news Latest
+  %ul
+  - for post in page.posts
+    .post
+      %li    
+        %a{:href=>post.originalUrl}= post.title
+        .meta
+          = post.author + " - "
+          = post.date.strftime( '%d %B %Y' ) + " - "   
+          %a{:href=>site.base_url + post.tags[0].primary_page.url}= post.tags[0]        
+        .content
+          = post.content
+
+#news
+  %h2.icon.news News
+  %ul
+  - for event in site.news
+    .event
+      %li
+        %a{:href=>event.originalUrl}= event.date.strftime( '%d %B %Y' )
+        .title
+          = event.title
+        .location
+          = event.location
+        .content
+          %hr
+          = event.content
+
